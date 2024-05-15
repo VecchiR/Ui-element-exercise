@@ -5,6 +5,8 @@ import gh from "./icons/github_mark.svg";
 import tanks from "./images/tanks.png";
 import misato from "./images/misato.png";
 import cross from "./images/cross.png";
+import html from "./index.html";
+
 
 const dropMenu = document.querySelectorAll('.dropdown-menu');
 dropMenu.forEach((x) =>
