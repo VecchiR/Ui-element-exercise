@@ -1,5 +1,9 @@
 import './style.css';
 
+let timer = setTimeout(() => {
+    slideCarousel();
+  }, 7000);
+
 const dropMenu = document.querySelectorAll('.dropdown-menu');
 dropMenu.forEach((x) =>
     x.addEventListener('mouseenter', () => {
@@ -14,6 +18,7 @@ dropMenu.forEach((x) =>
 
 const controls = document.querySelector('.controls');
 controls.addEventListener('click', (e) => {
+    clearTimeout(timer);
     if (e.target === controls.querySelector('.left-arrow')) {
         slideCarousel('left');
     } else if (e.target === controls.querySelector('.right-arrow')) {
@@ -34,6 +39,9 @@ function slideCarousel(direction, setFactor) {
         newFactor = setFactor;
         document.documentElement.style.setProperty('--carousel-factor', parseInt(newFactor));
         updCarouselCircles(newFactor);
+        timer = setTimeout(() => {
+            slideCarousel();
+          }, 7000);
         return;
     }
 
@@ -50,6 +58,9 @@ function slideCarousel(direction, setFactor) {
     }
 
     updCarouselCircles(newFactor);
+    timer = setTimeout(() => {
+        slideCarousel();
+      }, 7000);
 }
 
 function updCarouselCircles(factor) {
